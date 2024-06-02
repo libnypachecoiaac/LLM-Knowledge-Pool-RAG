@@ -12,10 +12,13 @@ parser = LlamaParse(
     language="en",
 )
 
-for document in os.listdir("knowledge_pool"):
+# Use an absolute path to the directory
+knowledge_pool_dir = "LLM-Knowledge-Pool-RAG\knowledge_pool"
+
+for document in os.listdir(knowledge_pool_dir):
     #Iterate through the pdfs
     if document.endswith(".pdf"):
-        filepath = os.path.join("knowledge_pool", document)
+        filepath = os.path.join(knowledge_pool_dir, document)
 
         # Parse the pdf
         pdf = parser.load_data(filepath)
@@ -23,7 +26,7 @@ for document in os.listdir("knowledge_pool"):
 
         # Save to a txt file
         output_filename = os.path.splitext(document)[0]
-        output_path = os.path.join("knowledge_pool", f"{output_filename}.txt")
+        output_path = os.path.join(knowledge_pool_dir, f"{output_filename}.txt")
         with open(output_path, 'w') as f:
             f.write(text)
             
