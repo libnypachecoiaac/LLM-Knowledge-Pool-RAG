@@ -19,6 +19,16 @@ mistral_8x7b = [
         }
 ]
 
+##Added by Libny -- go to the last code block in this script and change the variable "completion_model"!!
+mistral_7b_a = [
+        {
+            "model": "TheBloke/Mistral-7B-Instruct-v0.1-GGUF",
+            'api_key': 'any string here is fine',
+            'api_type': 'openai',
+            'base_url': "http://localhost:1234/v1",
+        }
+]
+
 mistral_7b = [
         {
             "model": "TheBloke/Mistral-7B-Instruct-v0.2-GGUF",
@@ -91,7 +101,7 @@ llama3 = [
 def api_mode (mode):
     if mode == "local":
         client = local_client
-        completion_model = mistral_7b #whatever model you want to use
+        completion_model = mistral_7b_a #whatever model you want to use
         return client, completion_model
     elif mode == "openai":
         client = openai_client
